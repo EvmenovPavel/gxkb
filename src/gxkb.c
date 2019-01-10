@@ -102,8 +102,6 @@ xkb_free( t_xkb_settings *xkb )
         kbd_config_free( xkb->kbd_config );
 
     g_free( xkb );
-
-    statusicon_free();
 }
 
 void
@@ -379,7 +377,7 @@ int main( int argc, char *argv[] )
     if( first_run )
         xkb_save_config( xkb, config_file );
 
-    status_icon_new();
+    statusicon_new();
 
     // Save original config
     t_xkb_settings *orig_config = g_new0( t_xkb_settings, 1 );
@@ -404,6 +402,7 @@ int main( int argc, char *argv[] )
     g_free( last_config );
     g_free( config_file );
     xkb_free( xkb );
+    statusicon_free();
 
     return 0;
 }
